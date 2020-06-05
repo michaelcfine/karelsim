@@ -1,0 +1,98 @@
+{{!-- pages/index.hbs --}}
+
+{{#> layouts/base title="Karel the Robot Reference Language" }}
+
+	{{#*inline "main-block"}}
+
+	 	<div id="reference">
+			<div id="reference_heading">Reference Guide: JavaScript</div>
+			<div id="reference_mininav"><a href="/karel/">return to main page</a></div>
+			<div id="reference_content">
+				<p>
+					This page provides a brief overview of the JavaScript programming language, the language used
+					to program Karel.
+					<br /><br />
+					<a href="/reference_overview/">Look here</a> for an overview of Karel's world and what he can do.
+					<a href="/reference_commands_and_functions/">Look here</a> for a reference guide that describes the details of the commands
+					and functions Karel understands.
+				</p>
+	
+				<div class="reference_subheading">Basics:</div>
+					<p>
+						<dl>
+							<dt>White Space and Line Breaks</dt>
+							<dd>
+								JavaScript ignores spaces, tabs, and newlines except those that appear within strings (see below).
+								This means you can (and should!) use formatting such as indentation and spacing to make your 
+								programs more readable to humans.
+							</dd>
+							<dt>Comments</dt>
+							<dd>
+								Any text between // and the end of a line is treated as a comment and is ignored.<br />
+								Any text between /* and */ is treated as a comment and is ignored.<br />
+								You should use comments generously within your code to explain what it is doing.
+							</dd>
+							<dt>Case Sensitivity</dt>
+							<dd>
+								JavaScript is a case-sensitive language. This means that language keywords, variables,
+								function names, and other identifiers much always be typed with a consistent capitalization
+								of letters. In other words, "turnleft()" is not the same as "turnLeft()" (notice the capital 'L').
+							</dd>
+							<dt>Semicolons</dt>
+							<dd>
+								Statements should (but do not strictly have to) end with a semicolon (;).
+							</dd>
+							<dt>Data Types</dt>
+							<dd>
+								JavaScript supports <i>values</i> with one of three primitive data types: Numbers, Strings, and Booleans (true or false).
+								<br />JavaScript does not distinguish between integers and floating point numbers.
+								<br />JavaScript also supports two special "data types", <i>null</i> and <i>undefined</i>, each
+								of which defines only a single value.<br />JavaScript also supports the <i>composite datatypes</i> <i>Object</i> and
+								<i>Array</i>.
+							</dd>
+							<dt>Variables</dt>
+							<dd>
+								JavaScript variables, like variables in any other programming language, can be thought of as named containers.
+								You can place data into these containers (called "assigning a value to a variable") and take data out of them
+								(called "getting the value of a variable"). JavaScript variables are defined with the <i>var</i> keyword.
+								Unlike many other languages, JavaScript variables are not <i>of</i> a certain type. The specific value contained
+								within a variable is of a specific type, but a variable may hold an integer at one point and then a string at
+								another point (although this is rare).
+							</dd>
+							<dt>Variable Scope</dt>
+							<dd>
+								MORE HERE
+							</dd>
+							<dt>Reserved Words</dt>
+							<dd>
+								The following are all reserved words in JavaScript:<br /><br />
+								abstract, boolean, break, byte, case, catch, char, class, const, continue, debugger, default, delete, do, double,
+								else, enum, export, extends, false, final, finally, float, for, function, goto, if, implements, import, in,
+								instanceof, int, interface, long, native, new, null, package, private, protected, public, return, short,
+								static, super	switch, synchronized, this, throw, throws, transient, true, try, typeof, var, void,
+								volatile, while, with
+							</dd>
+							<dt>Operators</dt>
+							<dd>
+								MORE HERE
+							</dd>
+							<dt>MORE HERE</dt>
+							<dd>
+								MORE HERE
+							</dd>
+						</dl>
+					</p>
+				</div>
+
+				<div class="reference_subheading">Conditionals / Branching:</div>
+				<p></p>
+	
+				<div class="reference_subheading">Repeating Things:</div>
+				<p></p>
+		
+			</div> <!-- reference_content -->
+		</div> <!-- reference -->
+
+	{{/inline}}
+
+{{/layouts/base}}

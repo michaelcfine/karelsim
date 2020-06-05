@@ -1,0 +1,115 @@
+// collectAllBeepers
+//
+// Collect all beepers in a world with no walls
+// Turn off when done
+//
+
+// Do a u-turn, in place
+function turnAround() {
+  turnLeft();
+  turnLeft();
+}
+
+// Face north
+function faceNorth() {
+  if ( isFacingEast() ) {
+    turnLeft();
+  } else if ( isFacingWest() ) {
+    turnRight();
+  } else if ( isFacingSouth() ) {
+    turnAround();
+  }
+}
+
+// Go to Avenue One
+// Assumes Karel is facing north before calling and 
+// leaves him facing north when done.
+function goAvenueOne() {
+  turnLeft();
+  while ( isFrontClear() ) {
+    move();
+  }
+  turnRight();
+}
+
+// Go to Street One
+// Assumes Karel is facing north before calling and 
+// leaves him facing north when done.
+function goStreetOne() {
+  turnAround();
+  while ( isFrontClear() ) {
+    move();
+  }
+  turnAround();
+}
+
+// Go to (1, 1) and face north
+function goHome() {
+  goAvenueOne();
+  goStreetOne();
+  print("Karel is now at (1,1) and facing north.");
+}
+
+// Pick up any/all beepers at current location
+// Stop if/when pick up last beeper in world
+function pickUpAllBeepersAtCurrentLocation() {
+  while ( isNextToABeeper() ) {
+    pickBeeper();
+  }
+}
+
+// Goes up or down avenue and picks up any/all beepers
+// Will "short-circuit" if notices that all beepers have
+// been picked up (won't continue to end of current ave)
+function clearAvenue() {
+  print("Clearing avenue " + getXPosition() + "...");
+  pickUpAllBeepersAtCurrentLocation();
+  while ( ( isFrontClear() ) && ( getNumBeepersInWorld() !== 0 ) ) {
+    move();
+    pickUpAllBeepersAtCurrentLocation();
+  }
+}
+
+// Perform a "u-turn to the next avenue (to the east)
+// Returns true if "done" (not able to go to next avenue),
+// false otherwise
+function uTurnToNextAvenueEast() {
+  print("Moving to next avenue to the east...");
+  if ( isFacingNorth() ) {
+    turnRight();
+    if ( isFrontClear() ) {
+      move();
+      turnRight();
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    turnLeft();
+    if ( isFrontClear() ) {
+      move();
+      turnLeft();
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+function main() {
+  // Start at "home position" (At (1,1) facing N)
+  //faceNorth();
+  //goHome();
+  
+  // Clear beepers, one avenue at a time
+  // from west to east
+  while ( getNumBeepersInWorld() !== 0 ) {
+    print("There are " + getNumBeepersInWorld() + " beepers in the world...");
+    clearAvenue();
+    if ( getNumBeepersInWorld() > 0 ) {
+      uTurnToNextAvenueEast();
+    }
+  }
+  
+  print("All done.");
+  turnOff();
+}

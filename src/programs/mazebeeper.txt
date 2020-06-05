@@ -1,0 +1,52 @@
+********************
+********************
+**   NOT FINISHED **
+********************
+********************
+
+// NOTES:
+// - Presence of five beepers means we're done
+// - Presence of no beepers means we've never been to the intersection
+// - Presence of one beeper means we've gone east
+// - Presence of two beepers means we've gone east and south
+// - Presence of three beepers means we've gone east, south, and west
+
+function haveDone(minNumBeepers) {
+    if ( getNumBeepersNextTo() >= minNumBeepers ) {
+	    return true;
+	} else {
+	    return false;
+	}
+}
+
+function amFinished() {
+    return ( haveDone(5) );
+}
+function haveDoneEast() {
+    return ( haveDone(1);
+}
+function haveDoneSouth() {
+    return ( haveDone(2);
+}
+function haveDoneWest() {
+    return ( haveDone(3);
+}
+function haveDoneNorth() {
+    return ( haveDone(4);
+}
+
+
+function main() {
+    var bFinished;
+	bFinished = amFinished();
+    while ( bFinished ) {
+	    if ( ! haveDoneEast() ) {
+		} else if ( ! haveDoneSouth() ) {
+		} else if ( ! haveDoneWest() ) {
+		} else if ( ! haveDoneNorth() ) {
+		} else {
+		    // Have gone all four directions without success... can't solve.
+		    bFinished = true;
+		}
+	}
+}

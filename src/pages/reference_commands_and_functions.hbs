@@ -1,0 +1,161 @@
+{{!-- pages/index.hbs --}}
+
+{{#> layouts/base title="Karel the Robot Projects" }}
+
+	{{#*inline "main-block"}}
+
+		<div id="reference">
+			<div id="reference_heading">Reference Guide: Commands and Programming Language</div>
+			<div id="reference_mininav"><a href="/karel/">return to main page</a></div>
+			<div id="reference_content">
+				<p>
+					This page provides a <strong>reference guide that describes the details of the commands
+					and functions</strong> that Karel understands.
+					<br /><br />
+					You may also want to read an <a href="/reference_overview/">overview of Karel's world and what he can do</a>
+					and/or a reference guide for the <a href="/reference_language/">JavaScript programming language</a>.
+				</p>
+	
+				<div class="reference_subheading">Primitive Instructions:</div>
+				<p>
+					<dl>
+						<dt>move()</dt>
+						<dd>
+							Move Karel forward, in whatever direction he is facing. Karel will CRASH and turn off
+							if he attempts to run into a wall or into one of the boundaries of his world.
+						</dd>
+
+						<dt>turnLeft()</dt>
+						<dd>
+							Turns Karel 90 degrees counterclockwise.
+						</dd>
+
+						<dt>turnRight()</dt>
+						<dd>
+							Turns Karel 90 degrees clockwise. (NOTE: Unlike the original Karel specifications, this is a built-in 
+							command.<a href="#differences"><super>*</super></a>)
+						</dd>
+
+						<dt>pickBeeper()</dt>
+						<dd>
+							Karel will pick up a beeper at his current location, if there is one, and put it in his
+							beeper bag. There must be a beeper at Karel's current location, otherwise he will turn off.
+						</dd>
+
+						<dt>putBeeper()</dt>
+						<dd>
+							Karel will put down a beeper at his current location, if he has at least one in his beeper bag.
+							There must be at least one beeper in Karel's beeper bag, otherwise he will turn off.
+							As well, if there is already a beeper at Karel's
+							location, he will turn off. That is, only one beeper may be located at a given intersection.
+							(NOTE: This is different than the original Karel specifications.<a href="#differences"><super>*</super></a>)
+						</dd>
+
+						<dt>turnOn(), turnOff()</dt>
+						<dd>
+							Used to turn Karel on and off. Not normally needed, but handy when manually operating Karel, potentially
+							as part of debugging a program. Note that unlike the original Karel specifications,
+							the last command of a program does not have to be turnOff().<a href="#differences"><super>*</super></a>
+						</dd>
+					</dl>
+				</p>
+		
+				<div class="reference_subheading">Conditions / Information:</div>
+				<p>
+					Karel understands many built-in <strong>functions</strong> which return information about his world
+					and his overall state (his location, the direction he is facing, etc.). All of the functions that
+					begin with 'is' return either true or false, boolean values which can be tested directly within
+					an 'if' statement. All of the functions that begin with 'get' return a piece of information such
+					as a number or string.
+					<dl>
+						<dt>isFacingNorth(), isFacingSouth(), isFacingEast(), isFacingWest()</dt>
+						<dd>
+							Each returns true if Karel is facing the corresponding direction and returns false otherwise.
+						</dd>
+
+						<dt>isFrontBlocked(), isLeftBlocked(), isRightBlocked()</dt>
+						<dd>
+							Each returns true if a wall or boundary is in front of, to the left of, or to the right of
+							Karel, respectively, or returns false otherwise. These are the opposites of the isXXXClear()
+							functions.
+						</dd>
+
+						<dt>isFrontClear(), isLeftClear(), isRightClear()</dt>
+						<dd>
+							Each returns true if a wall or boundary is NOT in front of, to the left of, or to the right of
+							Karel, respectively, or returns false otherwise. These are the opposites of the isXXXBlocked()
+							functions.
+						</dd>
+
+						<dt>isNextToABeeper(), isNotNextToABeeper()</dt>
+						<dd>
+							Each returns true if a wall or boundary is NOT in front of, to the left of, or to the right of
+							Karel, respectively, or returns false otherwise. These are the opposites of the isXXXBlocked()
+							functions.
+						</dd>
+
+						<dt>isAnyBeepersInBeeperBag(), isNoBeepersInBeeperBag()</dt>
+						<dd>
+							Returns true or false based on whether there are any beepers in Karel's beeper bag.
+						</dd>
+						<dt>
+							getXPosition(), getYPosition(), getPositionAsString(), getDirection(), <br />
+							getNumBeepersNextTo, getNumBeepersInWorld(), getNumBeepersInBeeperBag(), <br />
+							getWorldWidth(), getWorldHeight(),
+						</dt>
+						<dd>
+							Each of these functions returns a value that can be used within your program. getXPosition()
+							and getYPosition() return Karel's Avenue number and Street number respectively. The function getPositionAsString()
+							returns a string of the form "(x,y)" which is handy for debugging using the print() command
+							(see below). The function getDirection() returns one of 'north', 'south', 'east', or 'west'.
+							The functions getNumBeepersNextTo(), getNumBeepersInWorld() and getNumBeepersInBeeperBag() return the number of beepers
+							at Karel's current interection, in the world, or in Karel's beeper bag, respectively. The functions 
+							getWorldWidth() and getWorldHeight() return the number of Avenues and Streets in Karel's world, respectively.
+						</dd>
+
+						<dt>print(msg), assert(condition, msg)</dt>
+						<dd>
+							The print() function doesn't move or otherwise change Karel's state. Instead, it "prints" whatever
+							message passed as a parameter to the simulator's log. This is very handy for debugging.
+							<br /><br />
+							The assert() function tests whether the condition given is true or not. If it is not, the function
+							prints the message given. Thus, the message is only shown if some <i>assertion</i> or expectation
+							is not being met. This is very handy for debugging.
+						</dd>
+
+						<dt>clearWorld(maxX,maxY), wall(x,y,direction), karel(x,y,direction), beeper(x,y)</dt>
+						<dd>
+							These commands may be used to create a new world for Karel. Normally, these commands are not
+							used since worlds may be quickly and easily loaded using the user interface. The function
+							clearWorld takes a number of Avenues and a number of Streets which define the size of Karel's
+							world. (NOTE: Maximum 12.) The function karel(x,y,direction) will place Karel at the 
+							intersection given by the Avenue number (x) and Street number (y) and place him facing the
+							direction given ('north', etc.). The function beeper(x,y) will place a beeper at the
+							intersection given.
+						</dd>
+					</dl>
+				</p>
+		
+				<div class="reference_subheading">Error Conditions:</div>
+				<p>
+					Karel will obey your commands, but only if by doing so he can remain safe and not malfunction.
+					The descriptions of the various commands Karel can perform describe the situations under which Karel
+					 will perform an <strong>error shutdown</strong> and turn off. As well, Karel may not perform any
+					 command other than 'turnOn()' when he is off; attempting to do so is considered an error.
+				</p>
+
+				<br /><br />
+
+				<a name="differences"></a>
+				<div class="reference_subheading"><super>*</super>Differences From Karel the Robot's Original Definition:</div>
+				<p>
+					As noted in the text above, this Karel simulator is different in a few minor ways than the original
+					specifications in "Karel the Robot" by Richard E. Pattis and revised by Jim Roberts and Mark Stehlik.
+				</p>
+
+			</div> <!-- reference_content -->
+		</div> <!-- reference -->
+
+	{{/inline}}
+
+{{/layouts/base}}

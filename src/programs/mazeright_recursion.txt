@@ -1,0 +1,19 @@
+function step() {
+    if ( isNextToABeeper() ) {
+        print("DONE!");
+    } else if ( isRightClear() ) {
+        turnRight();
+        move();
+        step();
+    } else if ( isFrontClear() ) {
+        move();
+        step();
+    } else {
+        turnLeft();
+        step();
+    }
+}
+
+function main() {
+    step();
+}

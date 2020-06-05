@@ -1,0 +1,20 @@
+{
+	"name": "karelsim.com",
+	"version": "1.0.1",
+	"private": true,
+	"scripts": {
+		"clean": "gulp clean",
+		"buildonly": "gulp build && node r.js -o app.build.js",
+		"build": "gulp && node r.js -o app.build.js",
+		"preview": "node preview.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-clean": "^0.4.0",
+		"gulp-compile-handlebars": "^0.6.1",
+		"gulp-rename": "^2.0.0",
+		"node-static": "^0.7.11"
+	}
+}

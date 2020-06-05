@@ -1,0 +1,65 @@
+Karel To Do List
+================
+
+PORTING WORK
+~~~~~~~~~~~~
+- PORT BUILD FROM USE OF r.js, etc.
+- WORLD IS ONE CELL BIG :(
+- TEST THOROUGHLY
+
+
+High Priority / Easy
+~~~~~~~~~~~~~~~~~~~~
+- GET IT WORKING! FULLY TEST!
+- print(add(1,2)-add(3,4)) gives 4, not -4 (two pops not ordered properly)
+- For
+- Switch
+
+
+Medium Priority
+~~~~~~~~~~~~~~~
+- Run/pause as one icon position instead of separate?
+- Line number for function returns should be at end of function, not top
+- Karel syntax
+
+- Artificial step at end of variable declarations nxt value seems wrong (function main() { var a,b, c; a = 1;...})
+- function log() {...} would cause problems with console.log() (likely)... would cause console . jsim._call('log') Need scoping
+- Minimal vs. full command set (for each of JS and Original Karel syntax)
+- Decide about requirement for main() vs. loose code (like real js)
+- breakpoints
+- Complete dependency management / edge cases: change/load world, can step after run for a while and paused
+- Demo mode which includes design icons for editing world but NOT export import, clipboard for pgm, immediate window
+
+
+Low Priority
+~~~~~~~~~~~~
+- Performance (don't make ember rows and columns derived?)
+- Mazebeeper program
+- When adding quotes to string literals, need to escape any quote marks inside
+- Name event handlers with naming convention
+- Formalize sanity check stuff or remove???
+
+
+V2
+~~
+- Slider for playback speed instead of +/-
+- Drag and drop for size of pgm textarea
+
+
+Data Model
+~~~~~~~~~~
+group(id, textkey, created_date, active_flag, numUsersAllowed, numUsersUsed
+user(id, email, password, created_date, active_flag, group_id
+world(id, user_id, description, definition, created_date, last_modified_date
+program(id, user_id, name, version_number, description, code, created_date, last_modified_date
+
+Pay:
+- Create your own worlds that you can save and share within your class/group
+- Save programs, including versioning
+- List/print/run all user programs within group (teacher 'grading' classroom of assignments)
+
+
+Links/Contacts
+~~~~~~~~~~~~~~
+Art Simon, Lowell High School
+

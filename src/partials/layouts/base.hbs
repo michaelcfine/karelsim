@@ -1,0 +1,33 @@
+{{!-- layouts/base.hbs --}}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<html>
+<head id="head">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+
+	<title>{{#if title}}{{title}}{{else}}Karel the Robot Simulator{{/if}}</title>
+
+	<link href="/css/karel.css" rel="stylesheet" type="text/css" />
+
+	{{#> head-block}}
+		{{!-- Custom <head> content per page could be added. --}}
+	{{/head-block}}
+</head>
+
+<body>
+	<div id="main">
+		{{#> main-block}}
+			{{!-- Main content goes here. --}}
+		{{/main-block}}
+	</div>
+
+	{{#> scripts-block}}
+		{{!-- Custom scripts per page can be added. --}}
+	{{/scripts-block}}
+
+</body>
+</html>

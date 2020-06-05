@@ -1,0 +1,50 @@
+// runHurdles
+//
+// Move from (1,1) facing north eastward
+// "jumping over" hurdles (vertical walls
+// of varying heights) along the south edge
+// of the world along the way.
+// Turn off when done
+//
+
+function goUntilCant() {
+  while ( isFrontClear() ) {
+    move();
+  }
+}
+
+function goUntilRightIsClear() {
+  while ( isRightBlocked() ) {
+    move();
+  }
+}
+
+function goOverHurdleAndFaceEast() {
+  turnLeft();
+  goUntilRightIsClear();
+  turnRight();
+  move();
+  turnRight();
+  goUntilCant();
+  turnLeft();
+}
+
+function main() {
+  var done = false;
+
+  while ( !done ) {
+    if ( isNextToABeeper() ) {
+      done = true;
+    } else {
+      goUntilCant();
+      if ( isNextToABeeper() ) {
+        done = true;
+      } else {
+        goOverHurdleAndFaceEast();
+      }
+    }
+  }
+  
+  print("All done.");
+  turnOff();
+}

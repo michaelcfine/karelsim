@@ -1,0 +1,106 @@
+{{!-- pages/index.hbs --}}
+
+{{#> layouts/base title="Karel the Robot Projects" }}
+
+	{{#*inline "main-block"}}
+
+		<div id="reference">
+			<div id="reference_heading">Reference Guide: Programming Languages</div>
+			<div id="reference_mininav"><a href="/karel/">return to main page</a></div>
+			<div id="reference_content">
+				<p>
+					This page provides a brief overview of the available programming languages that can be used to program Karel.
+					<br /><br />
+					<a href="/reference_overview/">Look here</a> for an overview of Karel's world and what he can do.
+					<a href="/reference_language/">Look here</a> for a reference guide that describes the details of the commands
+					and functions Karel understands.
+				</p>
+	
+				<table id="languages_table" border="1">
+					<tr valign="top">
+						<th width="10%">Language Feature / Topic</th>
+						<th width="45%">JavaScript</th>
+						<th width="45%">Original "KarelScript"</th>
+					</tr>
+
+					<tr valign="top">
+						<td>White Space and Line Breaks</td>
+						<td>Ignored</td>
+						<td>Ignored</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Comments</td>
+						<td>//... to end of line<br/>/* ... */</td>
+						<td>Not originally specified, but // and /*...*/ comments are supported</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Case Sensitivity</td>
+						<td>Case sensitive</td>
+						<td>Case sensitive</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Semicolons</td>
+						<td>Statements should (but do not strictly have to) end with a semicolon (;)</td>
+						<td>Semicolons are not used</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Data Types</td>
+						<td>
+							JavaScript supports <i>values</i> with one of three primitive data types: Numbers, Strings, and Booleans (true or false).
+							<br />JavaScript does not distinguish between integers and floating point numbers.
+							<br />JavaScript also supports two special "data types", <i>null</i> and <i>undefined</i>, each
+							of which defines only a single value.<br />JavaScript also supports the <i>composite datatypes</i> <i>Object</i> and
+							<i>Array</i>.
+						</td>
+						<td>Variables and values are not supported</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Variables</td>
+						<td>
+							JavaScript variables, like variables in any other programming language, can be thought of as named containers.
+							You can place data into these containers (called "assigning a value to a variable") and take data out of them
+							(called "getting the value of a variable"). JavaScript variables are defined with the <i>var</i> keyword.
+							Unlike many other languages, JavaScript variables are not <i>of</i> a certain type. The specific value contained
+							within a variable is of a specific type, but a variable may hold an integer at one point and then a string at
+							another point (although this is rare).
+						</td>
+						<td>Variables are not supported</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Variable Scope</td>
+						<td>MORE HERE</td>
+						<td>Variables are not supported</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Reserved Words</td>
+						<td>
+							The following are all reserved words in JavaScript:<br /><br />
+							abstract, boolean, break, byte, case, catch, char, class, const, continue, debugger, default, delete, do, double,
+							else, enum, export, extends, false, final, finally, float, for, function, goto, if, implements, import, in,
+							instanceof, int, interface, long, native, new, null, package, private, protected, public, return, short,
+							static, super	switch, synchronized, this, throw, throws, transient, true, try, typeof, var, void,
+							volatile, while, with
+						</td>
+						<td>MORE HERE</td>
+					</tr>
+
+					<tr valign="top">
+						<td>Operators</td>
+						<td>MORE HERE</td>
+						<td>MORE HERE</td>
+					</tr>
+				</table>
+		
+			</div> <!-- reference_content -->
+		</div> <!-- reference -->
+
+	{{/inline}}
+
+{{/layouts/base}}

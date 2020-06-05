@@ -1,0 +1,49 @@
+{{!-- pages/index.hbs --}}
+
+{{#> layouts/base title="Karel the Robot Projects" }}
+
+	{{#*inline "main-block"}}
+
+		<div id="about">
+			<div id="about_heading">About / Contact</div>
+			<div id="about_mininav"><a href="/karel/">return to main page</a></div>
+			<div id="about_content">
+
+				<p>
+					This Karel simulator was written by <a href="mailto:michaelcfine@gmail.com">Mike Fine</a>.
+				</p>
+
+				<p>
+					Brief summary of features:
+					<ul>
+						<li>Allows for both <strong>manual operation</strong> (where a user can manually turn and move Karel
+						in order to "get a feel" for Karel and his world) and full
+						<strong>programmatic operation</strong> (where Karel follows a 'program' that guides its behavior)</li>
+						<li>Choice between <strong>JavaScript</strong> or <strong>original Karel syntax</strong> as programming language
+						(FUTURE: Support for Python, PHP, Java, Ruby)</li>
+						<li><strong>Syntax checker</strong> with <strong>error highlighting</strong></li>
+						<li><strong>Current line pointer</strong> while watching program execution</li>
+						<li><strong>Control playback speed</strong> of execution of program while "watching" programs execute</li>
+						<li><strong>Pause and restart</strong> execution of program</li>
+						<li><strong>Step </strong>through code one line at a time, including into functions</li>
+						<li><strong>Logging</strong> capability to aid in debugging
+						<br />(FUTURE: <strong>full debugger with breakpoints, step into, step out, etc.</strong>)</li>
+						<li>Built-in commands such as move(), turnLeft(), isFrontClear(), etc.</li>
+						<li>A set of <strong>test worlds</strong> that can be easily loaded/used</li>
+						<li>The ability to <strong>create your own worlds graphically</strong></li>
+						<li>Worlds up to 12x12</li>
+					</ul>
+				</p>
+
+				<br /><br />
+
+				<p>
+					<strong>Interested in helping or supporting the project?</strong> <a href="mailto:michaelcfine@gmail.com">Please contact me</a>.
+				</p>
+
+			</div> <!-- about_content -->
+		</div> <!-- about -->
+
+	{{/inline}}
+
+{{/layouts/base}}

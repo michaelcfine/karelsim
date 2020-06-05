@@ -1,0 +1,421 @@
+{{!-- pages/index.hbs --}}
+
+{{#> layouts/base title="Karel the Robot Simulator" }}
+
+	{{#*inline "head-block"}}
+
+		<link href="/css/jquery-linedtextarea/jquery-linedtextarea.css" rel="stylesheet" type="text/css" />
+
+		<script type="text/javascript" data-main="/js/karel" 
+			src="/js/libs/requirejs/require.js"></script>
+
+	{{/inline}}
+
+	{{#*inline "main-block"}}
+
+		div id="topcontent">
+
+			<img id="logo" src="/images/robot.gif" width="20" height="39" alt="Karel the Robot" />
+			<b><span class="title">Welcome to the Karel the Robot Simulator!</span></b>
+			<div id="navbar">
+				<a href="/about/">About/Contact</a> |
+				<a href="/reference_overview/">Overview</a> | 
+				<a href="/reference_commands_and_functions/">Commands &amp; Functions Reference</a> |
+				<a href="/reference_language/">JavaScript Language Reference</a> | 
+				<a href="/projects/">Projects</a> | 
+				<a href="/implementation_notes/">Implementation Notes</a>
+			</div>
+
+		</div> <!-- topcontent -->
+
+		<div id="middlecontent">
+
+			<div id="leftcontent">
+				<div id="manual_actions_heading">Manual Actions:</div>
+				<form id="f_clearworld">
+					<a id="btnInitializeEmptyWorldUsingForm" href="#">
+					Initialize empty world
+					</a>
+					Width:
+					<select id="width">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5" selected>5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+					Height:
+					<select id="height">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5" selected>5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+				</form>
+				<form id="f_loadworld">
+					<a id="btnLoadWorldUsingForm" href="#">
+					Load world
+					</a>
+					<span id="load_existing_world">
+						World:
+						<select id="worldName">
+							<option value="world_EmptySevenBySevenWithKarelInMiddle">7x7 turning practice</option>
+							<option value="world_Sample1">Sample #1</option>
+							<option value="world_Sample2">Sample #2</option>
+							<option value="world_Sample3">Sample #3</option>
+							<option value="">--------------------------------------------</option>
+							<option value="world_EmptyTenByFour">Empty 10x4</option>
+							<option value="world_EmptyEightByEight">Empty 8x8</option>
+							<option value="">--------------------------------------------</option>
+							<option value="world_EightByEightWithBeepers1">8x8 with beepers #1</option>
+							<option value="world_EightByEightWithBeepers2">8x8 with beepers #2</option>
+							<option value="world_EightByEightWithBeepers3">8x8 with beepers #3</option>
+							<option value="world_EightByEightWithRandomBeepers">8x8 with random beepers</option>
+							<option value="">--------------------------------------------</option>
+							<option value="world_TwelveByFourWithHurdles1">12x4 with hurdles #1</option>
+							<option value="world_TwelveByFourWithHurdles2">12x4 with hurdles #2</option>
+							<option value="world_TwelveByFourWithHurdles3">12x4 with hurdles #3</option>
+							<option value="world_TwelveByFourWithRandomHurdles">12x4 with random hurdles</option>
+							<option value="">--------------------------------------------</option>
+							<option value="world_EmptyTwelveByEightWithBeepersInBag">12x8 with beepers in bag</option>
+							<option value="">--------------------------------------------</option>
+							<option value="world_TwelveByTwelveMaze1">12x12 maze #1</option>
+							<option value="">--------------------------------------------</option>
+							<option value="world_Greetings">Greetings!</option>
+						</select>
+					</span>
+				</form>
+				<a id="btnResetKarel" href="#">Put Karel at (1, 1) facing north</a><br />
+				<a id="btnTurnOn"	 href="#">Turn on</a><br />
+				<a id="btnTurnOff"	href="#">Turn off</a><br />
+				<a id="btnMove"	   href="#">Move</a> &nbsp; (up arrow)<br />
+				<a id="btnTurnLeft"   href="#">Turn left</a>  &nbsp; (left arrow)<br />
+				<a id="btnTurnRight"  href="#">Turn right</a>  &nbsp; (right arrow)<br />
+				<a id="btnPickBeeper" href="#">Pick up a beeper</a><br />
+				<a id="btnPutBeeper"  href="#">Put down a beeper</a><br />
+				<br />
+				<hr />
+				<div>
+					<div id="program_heading_1">
+						<span id="program_heading">Program:</span>
+						<span id="run_program_link">
+						<a id="btnCheckSyntaxOnly" href="#"><img src="/images/icon-syntaxcheck.gif" alt="Check Syntax" title="Check Syntax"></a>
+						<a id="btnResetProgram" href="#"><img src="/images/icon-reset.gif" alt="Reset" title="Reset"></a>
+						<a id="btnStepOver" href="#"><img src="/images/icon-stepover-disabled.gif" alt="Step" title="Step"></a>
+						<a id="btnSpeedUp" href="#"><img src="/images/icon-speedup.gif" alt="Speed Up" title="Speed Up"></a>
+						<a id="btnSlowDown" href="#"><img src="/images/icon-slowdown.gif" alt="Slow Down" title="Slow Down"></a>
+						<a id="btnPause" href="#"><img src="/images/icon-pause.gif" alt="Pause/Unpause" title="Pause/Unpause"></a>
+						<a id="btnRunProgram" href="#"><img src="/images/icon-run.gif" alt="Run" title="Run"></a>
+						</span>
+					</div>
+					<div id="program_heading_2">
+						<span id="grammars_area"><span id="grammars_label">Language:</span><span id="grammars"></span></span>
+					</div>
+					<div id="prgram_heading_3">
+						<span id="commands_area"><span id="commands_label">Insert:</span><span id="commands"></span></span>
+					</div>
+				</div>
+				<form id="f_pgm">
+					<img id="syntaxerror" src="/images/exclamationpoint.gif" style="display:none;" />
+					<img id="currentline" src="/images/bluearrow.gif" style="display:none;" />
+<textarea id="pgm" class="lined" cols=46 rows=20 wrap="soft">
+function goUntilCant() {
+    while ( isFrontClear() ) {
+        move();
+    }
+}
+
+function main() {
+    goUntilCant();
+}
+</textarea>
+				</form>
+				<div id="program_sizing">
+					<div id="program_sizing_buttons">
+						<a id="btnNarrow"   href="#"><img src="/images/pgm-narrow.gif"   alt="Narrow"   title="Narrow"  ></a>
+						<a id="btnWiden"	href="#"><img src="/images/pgm-widen.gif"	alt="Widen"	title="Widen"   ></a>
+						<a id="btnShorten"  href="#"><img src="/images/pgm-shorten.gif"  alt="Shorten"  title="Shorten" ></a>
+						<a id="btnLengthen" href="#"><img src="/images/pgm-lengthen.gif" alt="Lengthen" title="Lengthen"></a>
+					</div>
+				</div>
+				<hr />
+				<div id="immediate_heading">
+					Immediate Window:
+					<span id="run_immediate_link">
+					<a id="btnRunImmediate" href="#"><img src="/images/icon-run.gif" alt="Run" title="Run"></a>
+					</span>
+				</div>
+				<form id="f_immed">
+					<textarea id="immed" cols=46 rows=2 wrap="soft" 
+						></textarea>
+				</form>
+			</div> <!-- leftcontent -->
+
+			<div id="rightcontent">
+				<div id="iconbar">
+					<span id="design_icons">
+					<a id="btnIconClearWorld" href="#">
+					<img id='icon-clearworld' class='icon' src="/images/icon-clearworld.gif" border="0" title="Clear World" alt="Clear World" />
+					</a>
+					<a id="btnIconKarel" href="#">
+					<img id='icon-karel' class='icon' src="/images/icon-karel.gif" border="0" title="Karel" alt="Karel" />
+					</a>
+					<a id="btnIconBeeper" href="#">
+					<img id='icon-beeper' class='icon' src="/images/icon-beeper.gif" border="0" title="Beeper" alt="Beeper" />
+					</a>
+					<a id="btnIconClear" href="#">
+					<img id='icon-clear' class='icon' src="/images/icon-clear.gif" border="0" title="Clear" alt="Clear" />
+					</a>
+					<a id="btnIconWall10" href="#">
+					<img id='icon-wall-10' class='icon' src="/images/icon-wall-10.gif" border="0" title="Top and Bottom Walls" alt="Top and Bottom Walls" />
+					</a>
+					<a id="btnIconWall5" href="#">
+					<img id='icon-wall-5' class='icon' src="/images/icon-wall-5.gif" border="0" title="Left and Right Wall" alt="Left and Right Wall" />
+					</a>
+					<a id="btnIconWall9" href="#">
+					<img id='icon-wall-9' class='icon' src="/images/icon-wall-9.gif" border="0" title="Top Left Corner" alt="Top Left Corner" />
+					</a>
+					<a id="btnIconWall12" href="#">
+					<img id='icon-wall-12' class='icon' src="/images/icon-wall-12.gif" border="0" title="Top Right Corner" alt="Top Right Corner" />
+					</a>
+					<a id="btnIconWall3" href="#">
+					<img id='icon-wall-3' class='icon' src="/images/icon-wall-3.gif" border="0" title="Bottom Left Corner" alt="Bottom Left Corner" />
+					</a>
+					<a id="btnIconWall6" href="#">
+					<img id='icon-wall-6' class='icon' src="/images/icon-wall-6.gif" border="0" title="Bottom Right Corner" alt="Bottom Right Corner" />
+					</a>
+					<a id="btnIconWall15" href="#">
+					<img id='icon-wall-15' class='icon' src="/images/icon-wall-15.gif" border="0" title="Wall Intersection" alt="Wall Intersection" />
+					</a>
+					<a id="btnIconWall8" href="#">
+					<img id='icon-wall-8' class='icon' src="/images/icon-wall-8.gif" border="0" title="Top Wall" alt="Top Wall" />
+					</a>
+					<a id="btnIconWall4" href="#">
+					<img id='icon-wall-4' class='icon' src="/images/icon-wall-4.gif" border="0" title="Right Wall" alt="Right Wall" />
+					</a>
+					<a id="btnIconWall2" href="#">
+					<img id='icon-wall-2' class='icon' src="/images/icon-wall-2.gif" border="0" title="Bottom Wall" alt="Bottom Wall" />
+					</a>
+					<a id="btnIconWall1" href="#">
+					<img id='icon-wall-1' class='icon' src="/images/icon-wall-1.gif" border="0" title="Left Wall" alt="Left Wall" />
+					</a>
+					<a id="btnIconWall13" href="#">
+					<img id='icon-wall-13' class='icon' src="/images/icon-wall-13.gif" border="0" title="Left, Right, and Top Walls" alt="Left, Right, and Top Walls" />
+					</a>
+					<a id="btnIconWall7" href="#">
+					<img id='icon-wall-7' class='icon' src="/images/icon-wall-7.gif" border="0" title="Left, Right, and Bottom Walls" alt="Left, Right, and Bottom Walls" />
+					</a>
+					<a id="btnIconWall11" href="#">
+					<img id='icon-wall-11' class='icon' src="/images/icon-wall-11.gif" border="0" title="Top, Bottom, and Left Walls" alt="Top, Bottom, and Left Walls" />
+					</a>
+					<a id="btnIconWall14" href="#">
+					<img id='icon-wall-14' class='icon' src="/images/icon-wall-14.gif" border="0" title="Top, Bottom, and Right Walls" alt="Top, Bottom, and Right Walls" />
+					</a>
+					</span>
+					<span id="import_export_icons">
+					<a id="btnIconExportWorld" href="#">
+					<img id='icon-exportworld' class='icon' src="/images/icon-exportworld.gif" border="0" title="Export World" alt="Export World" />
+					</a>
+					<a id="btnIconImportWorld" href="#">
+					<img id='icon-importworld' class='icon' src="/images/icon-importworld.gif" border="0" title="Import World" alt="Import World" />
+					</a>
+					</span>
+				</div>
+				<div id="world"></div>
+				<div id="info_block">
+					<div id="info_block_heading">Status:</div>
+					<div id="info"></div>
+				</div>
+				<! -- info_block -->
+				<div id="log_block">
+					<div id="log_block_heading">
+						Log:
+						<span id="clear_log_link"><a id="btnClearLog" href="#">Clear Log</a></span>
+					</div>
+					<div id="log"></div>
+				</div>
+				<!-- log_block -->
+			</div> <!-- rightcontent -->
+
+		</div> <!-- middlecontent -->
+
+		<div id="bottomcontent">
+
+			<p>
+				&copy; Copyright Mike Fine, 2012
+			</p>
+
+		</div> <!-- bottomcontent -->
+
+		<!-- Ember Handlebar Templates -->
+		
+		<script type="text/x-handlebars" data-template-name="WorldStatusView">
+			{{{{raw}}}}
+
+			{{#with WORLDSIM.worldController.world}}
+			<div>
+				Karel is: <span id="status">{{karel.status}}</span>
+				&nbsp;at&nbsp;
+				<span id="location">({{karel.wx}}, {{karel.wy}})</span>
+				&nbsp;facing&nbsp;
+				<span id="direction">{{karel.direction}}</span>
+			</div>
+			<div>
+				Number of beepers in world: 
+				<span id="numBeepersInWorld">{{numBeepersInWorld}}</span>
+			</div>
+			<div>
+				Number of beepers in Karel's bag: 
+				<span id="numBeepersInKarelsBag">{{karel.numBeepersInBag}}</span>
+			</div>
+			{{/with}}
+			{{{{/raw}}}}
+		</script>
+		
+		<script type="text/x-handlebars" data-template-name="WorldView">
+			{{{{raw}}}}
+			<!-- === Top Border row === -->
+			<div class="row">
+				<!-- Street number Column, Top Border row -->
+				<span class="cell" id="span_SC_TB">
+					<img id="cell_SC_TB" src="/images/clear.gif" />
+				</span>
+				<!-- Left Border column, Top Border row -->
+				<span class="cell" id="span_LB_TB">
+					<img id="cell_LB_TB" src="/images/border-6.gif" />
+				</span>
+				<!-- Top Border row, non-corners -->
+				{{#each WORLDSIM.worldController.world.columns}}
+					<span class="cell" {{bindAttr id="topBorderSpanId"}}>
+						<img {{bindAttr id="topBorderCellId"}} src="/images/border-5.gif" />
+					</span>
+				{{/each}}
+				<!-- Right Border column, Top Border row -->
+				<span class="cell" id="span_RB_TB">
+					<img id="cell_RB_TB" src="/images/border-3.gif" />
+				</span>
+			</div>
+				
+			<!-- === "middle" rows === -->
+			{{#each WORLDSIM.worldController.world.rows}}
+				<div class="row">
+					<!-- Street number Column, rx'th row -->
+					<span class="cell" {{bindAttr id="stColSpanId"}}>
+						{{displayWy}}
+					</span>
+					<!-- Left Border column, rx'th row -->
+					<span class="cell" {{bindAttr id="leftBorderSpanId"}}>
+						<img {{bindAttr id="leftBorderCellId"}} src="/images/border-10.gif" />
+					</span>
+					<!-- rx'th row, ry'th column -->
+					{{#each cols}}
+						<span class="cell" {{bindAttr id="spanId"}}>
+							{{#if isIntersection}}
+							
+								{{#if intersection.hasMoreThanOneBeeper}}
+									{{#if intersection.hasKarel}}
+										<img {{bindAttr id="cellId"}} class="karelWithMultipleBeepers"
+											 {{bindAttr src="intersection.karel.imgSrc"}} />
+										<span class="counterMultipleWithKarel">{{intersection.numBeepers}}</span>
+									{{else}}
+										<img {{bindAttr id="cellId"}} src="/images/beeper.gif" />
+										<span class="counterMultipleWithoutKarel">{{intersection.numBeepers}}</span>
+									{{/if}}
+								{{else}}
+									{{#if intersection.hasAtLeastOneBeeper}}
+										{{#if intersection.hasKarel}}
+											<img {{bindAttr id="cellId"}} class="karelWithOneBeeper"
+												 {{bindAttr src="intersection.karel.imgSrc"}} />
+											<span class="counterSingleWithKarel">1</span>
+										{{else}}
+											<img {{bindAttr id="cellId"}} src="/images/beeper.gif" />
+										{{/if}}
+									{{else}}
+										{{#if intersection.hasKarel}}
+											<img {{bindAttr id="cellId"}} class="karel"
+												 {{bindAttr src="intersection.karel.imgSrc"}} />
+										{{else}}
+											<img {{bindAttr id="cellId"}} src="/images/dot.gif" />
+										{{/if}}
+									{{/if}}
+								{{/if}}
+								
+							{{/if}}
+							{{#if isCorridor}}
+							
+								{{#if corridor.hasWall}}
+									<img {{bindAttr id="cellId"}} {{bindAttr src="corridor.wall.imgSrc"}} />
+								{{else}}
+									<img {{bindAttr id="cellId"}} src="/images/clear.gif" />
+								{{/if}}
+								
+							{{/if}}
+						</span>
+					{{/each}}
+					<!-- Right Border column, rx'th row -->
+					<span class="cell" {{bindAttr id="rightBorderSpanId"}}>
+						<img {{bindAttr id="rightBorderCellId"}} src="/images/border-10.gif" />
+					</span>
+				</div>
+			{{/each}}
+				
+			<!-- === Bottom Border row === -->
+			<div class="row">
+				<!-- Street number Column, Bottom Border row -->
+				<span class="cell" id="span_SC_BB">
+					<img id="cell_SC_BB" src="/images/clear.gif">
+				</span>
+				<!-- Left Border column, Bottom Border row -->
+				<span class="cell" id="span_LB_BB">
+					<img id="cell_LB_BB" src="/images/border-12.gif">
+				</span>
+				<!-- Bottom Border row, non-corners -->
+				{{#each WORLDSIM.worldController.world.columns}}
+					<span class="cell" {{bindAttr id="bottomBorderSpanId"}}>
+						<img {{bindAttr id="bottomBorderCellId"}} src="/images/border-5.gif" />
+					</span>
+				{{/each}}
+				<!-- Right Border column, Bottom Border row -->
+				<span class="cell" id="span_RB_BB">
+					<img id="cell_RB_BB" src="/images/border-9.gif">
+				</span>
+			</div>
+			
+			<!-- === Avenue number Row === -->
+			<div class="row">
+				<!-- Street number Column, Avenue number Row -->
+				<span class="cell" id="span_SC_AR">
+					<img id="cell_SC_AR" src="/images/ave-st.gif" />
+				</span>
+				<!-- Left Border column, Avenue number Row -->
+				<span class="cell" id="span_LB_AR">
+					<img id="cell_LB_AR" src="/images/clear.gif" />
+				</span>
+				<!-- rx'th column, Avenue number Row -->
+				{{#each WORLDSIM.worldController.world.columns}}
+					<span class="cell" {{bindAttr id="aveRowSpanId"}}>
+						{{displayWx}}
+					</span>
+				{{/each}}
+			</div>
+			{{{{/raw}}}}
+		</script>
+
+	{{/inline}}
+
+{{/layouts/base}}

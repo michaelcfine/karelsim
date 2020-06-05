@@ -1,0 +1,12 @@
+function main() {
+    while ( isNotNextToABeeper() ) {
+        if ( isRightClear() ) {
+            turnRight();
+            move();
+        } else if ( isFrontClear() ) {
+            move();
+        } else {
+            turnLeft();
+        }
+    }
+}

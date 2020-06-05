@@ -1,0 +1,113 @@
+{{!-- pages/index.hbs --}}
+
+{{#> layouts/base title="Karel the Robot Projects" }}
+
+	{{#*inline "main-block"}}
+
+		<div id="projects">
+			<div id="projects_heading">Projects</div>
+			<div id="projects_mininav"><a href="/karel/">return to main page</a></div>
+			<div id="projects_content">
+				<p>
+					This page contains a list of projects (a.k.a. assignments or homework). <strong>I strongly
+					encourage you to work through these projects!</strong> Actually writing programs is the
+					only real way to master the problem solving skills of a software engineer.		
+				</p>
+	
+			<div class="projects_subheading">Starters:</div>
+				<p>Here are easy starter projects:
+					<dl>
+			
+						<dt>U-Turn</dt>
+						<dd>
+							Write a function that will direct Karel to perform a U-turn, that is to turn
+							around 180 degrees so that he ends up facing the opposite direction from his
+							direction before he executes the function. Use the "7x7 turning practice" world to test.
+						</dd>
+				
+						<dt>Turn Right</dt>
+						<dd>
+							Suppose that Karel did not have a built-in 'turnRight()' command. How could
+							you implement one yourself? Write the code and test it. (NOTE:
+							you'll have to use a different name than 'turnRight' since that function name
+							is already used.) Use the "7x7 turning practice" world to test.
+						</dd>
+						
+						<dt>Face East</dt>
+						<dd>
+							Karel knows how to answer the questions, "am I facing North?" ('isFacingNorth()'),
+							"am I facing South?" ('isFacingSouth()'), etc.
+							He also knows how to answer the question, "what direction am I facing? ('getDirection()').
+							And of course, Karel knows how to turn ('turnLeft()' and 'turnRight()').
+							Using these capabilities, how could you implement a function that ensures that Karel
+							is facing east, regardless of the direction Karel is facing before the function is invoked?
+							Write the code and test it. Use the "7x7 turning practice" world to test.
+						</dd>
+				
+					</dl> 
+				</p>
+	
+				<br /><hr />
+		
+				<div class="projects_subheading">Tier Two:</div>
+				<p>Here are some more projects that are a bit more challenging:
+					<dl>
+
+						<dt>Pick Up All Beepers</dt>
+						<dd>
+							Suppose Karel is put into a world of unknown dimensions with no interior walls
+							(just borders) at some unknown location within the world, and some number of beepers 
+							scattered within the world. Note that Karel
+							can tell how many beepers are in the world ('getNumBeepersInWorld()'). Write a program
+							which instructs Karel to pick up all of the beepers in the world until there are no
+							more. Use the "8x8 with beepers #1", etc. worlds to test. Use the "8x8 with random
+							beepers" world to test even further.
+						</dd>
+
+						<dt>Create a Banner</dt>
+						<dd>
+							Suppose Karel is put at (1,1) facing north in a world of unknown dimensions but
+							"big enough" to "draw" up to three letters (see below), and with no interior walls.
+							Karel starts with "lots" of beepers in his bag, enough so he won't "run out".
+							Write a program which instructs Karel to drop beepers in a pattern to spell out
+							"CAT" using beepers dropped on intersections in the world. Use the "12x8 with beepers in bag"
+							world to test. Advanced: create functions for each letter of the alphabet so that
+							it is easy to spell any (short) word using beepers. Using upper case only letters
+							is acceptable.
+						</dd>
+					</dl>
+				</p>
+		
+				<br /><hr />
+		
+				<div class="projects_subheading">Advanced:</div>
+				<p>Here are some projects that are even more challenging:
+					<dl>
+						<dt>Run the Hurdles</dt>
+						<dd>
+							Suppose Karel is placed at (1,1) facing east in a world of unknown dimensions
+							with a series of "hurdles" (vertical walls of varying heights) coming up
+							from the bottom border of his world. Write a program which instructs Karel 
+							to "run the hurdles" (move east, going up and over each hurdle). The program
+							should stop when Karel finds a beeper, which marks the end of the race.
+							Use the "12x4 with hurdles #1", etc. worlds to test. Use the "12x4 with random
+							hurdles" world to test even further.
+						</dd>
+
+						<dt>Escape a Maze</dt>
+						<dd>
+							Suppose Karel is placed at (1,1) facing north in a world of unknown dimensions
+							with an unknown number of walls (in unknown locations) configured like a traditional
+							"maze". Karel's job is to get to the end of the maze, as marked by a lone beeper
+							in the world. Karel must navigate the maze, being sure not to crash into any walls
+							or boundaries. Use the "12x12 maze #1", etc. worlds to test.
+						</dd>
+					</dl>
+				</p>
+		
+			</div> <!-- projects_content -->
+		</div> <!-- projects -->
+
+	{{/inline}}
+
+{{/layouts/base}}

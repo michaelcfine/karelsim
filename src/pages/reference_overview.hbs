@@ -1,0 +1,89 @@
+{{!-- pages/index.hbs --}}
+
+{{#> layouts/base title="Karel the Robot Projects" }}
+
+	{{#*inline "main-block"}}
+
+		<div id="reference">
+			<div id="reference_heading">Reference Guide: Overview</div>
+			<div id="reference_mininav"><a href="/karel/">return to main page</a></div>
+			<div id="reference_content">
+				<p>
+					This page provides an <strong>overview of Karel's world and what he can do</strong>.
+					<br /><br />
+					You may also want to read a reference guide that describes the 
+					<a href="/reference_commands_and_functions/">details of the commands and functions Karel understands</a> and/or a 
+					reference guide for the <a href="/reference_language/">JavaScript programming language</a>.
+				</p>
+	
+				<div class="reference_subheading">Karel's World:</div>
+				<p>
+					<dl>
+						<dt>General Comments</dt>
+						<dd>
+							Karel lives in a flat world with the standard north, south, east, and west compass points.
+							The world is bounded on all four sides<a href="#differences"><super>*</super></a> by boundaries. Karel cannot bump
+							into these walls; if he tries to move into one, he will crash.
+							<br /><br />
+							Crisscrossing the world are horizontal <strong>streets</strong> (running east-west) and vertical
+							<strong>avenues</strong> (running north-south). An <strong>intersection</strong> (or street corner or corner) is located
+							wherever a street and avenue intersect. Karel can be positioned on any corner, facing
+							one of the four compass points. Both streets and avenues are numbered; consequently
+							each intersection may be identified by its street and avenue numbers.
+							<br /><br />
+							The corner of 1st Street and 1st Avenue is named the <strong>origin</strong>. This is
+							the most southwesterly corner in Karel's world. Street numbers increase as Karel travels east
+							and avenue numbers increase as Karel travels north.
+						</dd>
+
+						<dt>Karel's Location</dt>
+						<dd>
+							As mentioned above, Karel will always be located at an intersection within his world,
+							and will always be facing north, south, east, or west.
+						</dd>
+					
+						<dt>Walls</dt>
+						<dd>
+							Within Karel's world may also be one or more <strong>walls</strong>. Just as Karel may not
+							move into the boundaries of his world, he may not move into walls within it either. An attempt
+							to move into a wall will cause Karel to crash, just like an attempt to move into a boundary.
+						</dd>
+					
+						<dt>Beepers</dt>
+						<dd>
+							Within Karel's world may be zero or more <strong>beepers</strong>. Beepers are small objects that
+							emit a quiet beeping noise that Karel can "hear". When present, they are located at intersections
+							(like Karel), which means when Karel is at a particular intersection, he might be "next to" a
+							beeper, if there is one located where he is located. Karel can pick beepers up and put them
+							into his "beeper bag" (see below) or take them out of his beeper bag and put them down at the
+							intersection at which he is located. More than one beeper may be located at any given 
+							intersection.
+						</dd>
+
+						<dt>Karel's Beeper Bag</dt>
+						<dd>
+							As mentioned above, Karel has a <strong>beeper bag</strong> into which he can put any number of beepers. The bag is
+							made of a material that completely blocks the sound emitted by the beepers. This means that
+							Karel will never "accidentally" "hear" a beeper in his bag. If he hears a beeper while at an
+							intersection it is because there is a beeper at that intersection that is not in his bag.
+						</dd>
+					</dl> 
+				</p>
+		
+				<br /><br />
+			
+				<a name="differences"></a>
+				<div class="reference_subheading">
+					<super>*</super>Differences From Karel the Robot's Original Specifications:
+				</div>
+				<p>
+					As noted in the text above, this Karel simulator is different in a few minor ways than the original
+					specifications in "Karel the Robot" by Richard E. Pattis and revised by Jim Roberts and Mark Stehlik.
+				</p>
+			
+			</div> <!-- reference_content -->
+		</div> <!-- reference -->
+
+	{{/inline}}
+
+{{/layouts/base}}
